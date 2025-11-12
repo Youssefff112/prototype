@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diet Plan - FitCore</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="dashboard.html">
+          <i class="fas fa-dumbbell"></i> FitCore
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-user-circle"></i>
+                <span class="user-name">User</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="settings.html"
+                    ><i class="fas fa-user-cog me-2"></i> Profile Settings</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-bell me-2"></i> Notifications</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#" data-logout
+                    ><i class="fas fa-sign-out-alt me-2"></i> Logout</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="mt-4">
+          <a href="dashboard.html" class="sidebar-link">
+            <i class="fas fa-home me-2"></i> Dashboard
+          </a>
+          <a href="workout-plan.html" class="sidebar-link">
+            <i class="fas fa-calendar-alt me-2"></i> Workout Plan
+          </a>
+          <a href="diet-plan.html" class="sidebar-link active">
+            <i class="fas fa-utensils me-2"></i> Diet Plan
+          </a>
+          <a href="gym-finder.html" class="sidebar-link" id="gymFinderLink">
+            <i class="fas fa-search-location me-2"></i> Find Gyms
+          </a>
+          <a href="ai-assistant.html" class="sidebar-link" id="aiAssistantLink">
+            <i class="fas fa-robot me-2"></i> AI Assistant
+          </a>
+          <a href="progress.html" class="sidebar-link">
+            <i class="fas fa-chart-line me-2"></i> Progress
+          </a>
+          <a href="settings.html" class="sidebar-link">
+            <i class="fas fa-cog me-2"></i> Settings
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h1 class="mb-0">
+            <i class="fas fa-utensils me-2"></i> Your Diet Plan
+          </h1>
+          <button class="btn btn-primary" onclick="regenerateDietPlan()">
+            <i class="fas fa-sync-alt me-2"></i> Regenerate Plan
+          </button>
+        </div>
+
+        <!-- Daily Nutrition Goals -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-3">
+            <div class="stat-card text-center">
+              <h6 class="text-muted">Daily Calories</h6>
+              <h3 class="text-primary mb-0">2,200</h3>
+              <small class="text-muted">kcal</small>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card text-center">
+              <h6 class="text-muted">Protein</h6>
+              <h3 class="text-success mb-0">165g</h3>
+              <small class="text-muted">30%</small>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card text-center">
+              <h6 class="text-muted">Carbs</h6>
+              <h3 class="text-warning mb-0">220g</h3>
+              <small class="text-muted">40%</small>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card text-center">
+              <h6 class="text-muted">Fats</h6>
+              <h3 class="text-danger mb-0">73g</h3>
+              <small class="text-muted">30%</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Today's Meals -->
+        <div class="workout-day mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+              <i class="fas fa-sun me-2"></i> Breakfast (7:00 AM)
+            </h4>
+            <span class="badge bg-primary">550 kcal</span>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Oatmeal with Berries & Nuts</h6>
+              <small class="text-muted"
+                >Protein: 15g | Carbs: 65g | Fat: 18g</small
+              >
+              <p class="mt-2 mb-0 text-muted small">
+                • 1 cup oatmeal<br />
+                • 1/2 cup mixed berries<br />
+                • 1 tbsp almonds<br />
+                • 1 tbsp honey
+              </p>
+            </div>
+            <button
+              class="btn btn-sm btn-outline-success"
+              onclick="markMealComplete(this)"
+            >
+              <i class="fas fa-check"></i> Done
+            </button>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Scrambled Eggs with Toast</h6>
+              <small class="text-muted"
+                >Protein: 20g | Carbs: 25g | Fat: 12g</small
+              >
+              <p class="mt-2 mb-0 text-muted small">
+                • 3 eggs<br />
+                • 2 slices whole wheat toast<br />
+                • 1 tsp olive oil
+              </p>
+            </div>
+            <button
+              class="btn btn-sm btn-outline-success"
+              onclick="markMealComplete(this)"
+            >
+              <i class="fas fa-check"></i> Done
+            </button>
+          </div>
+        </div>
+
+        <div class="workout-day mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+              <i class="fas fa-coffee me-2"></i> Mid-Morning Snack (10:00 AM)
+            </h4>
+            <span class="badge bg-success">200 kcal</span>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Greek Yogurt with Honey</h6>
+              <small class="text-muted"
+                >Protein: 15g | Carbs: 25g | Fat: 5g</small
+              >
+              <p class="mt-2 mb-0 text-muted small">
+                • 1 cup Greek yogurt (low-fat)<br />
+                • 1 tbsp honey<br />
+                • Cinnamon to taste
+              </p>
+            </div>
+            <button
+              class="btn btn-sm btn-outline-success"
+              onclick="markMealComplete(this)"
+            >
+              <i class="fas fa-check"></i> Done
+            </button>
+          </div>
+        </div>
+
+        <div class="workout-day mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+              <i class="fas fa-cloud-sun me-2"></i> Lunch (1:00 PM)
+            </h4>
+            <span class="badge bg-warning">650 kcal</span>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Grilled Chicken with Rice & Vegetables</h6>
+              <small class="text-muted"
+                >Protein: 45g | Carbs: 60g | Fat: 18g</small
+              >
+              <p class="mt-2 mb-0 text-muted small">
+                • 200g grilled chicken breast<br />
+                • 1 cup brown rice<br />
+                • Mixed vegetables (broccoli, carrots)<br />
+                • 1 tbsp olive oil
+              </p>
+            </div>
+            <button
+              class="btn btn-sm btn-outline-success"
+              onclick="markMealComplete(this)"
+            >
+              <i class="fas fa-check"></i> Done
+            </button>
+          </div>
+        </div>
+
+        <div class="workout-day mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+              <i class="fas fa-cookie-bite me-2"></i> Afternoon Snack (4:00 PM)
+            </h4>
+            <span class="badge bg-info">250 kcal</span>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Protein Shake with Banana</h6>
+              <small class="text-muted"
+                >Protein: 30g | Carbs: 35g | Fat: 5g</small
+              >
+              <p class="mt-2 mb-0 text-muted small">
+                • 1 scoop whey protein<br />
+                • 1 medium banana<br />
+                • 1 cup almond milk<br />
+                • Ice cubes
+              </p>
+            </div>
+            <button
+              class="btn btn-sm btn-outline-success"
+              onclick="markMealComplete(this)"
+            >
+              <i class="fas fa-check"></i> Done
+            </button>
+          </div>
+        </div>
+
+        <div class="workout-day mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+              <i class="fas fa-moon me-2"></i> Dinner (7:00 PM)
+            </h4>
+            <span class="badge bg-danger">550 kcal</span>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Salmon with Sweet Potato & Asparagus</h6>
+              <small class="text-muted"
+                >Protein: 40g | Carbs: 45g | Fat: 20g</small
+              >
+              <p class="mt-2 mb-0 text-muted small">
+                • 180g grilled salmon<br />
+                • 1 medium sweet potato<br />
+                • 1 cup asparagus<br />
+                • Lemon & herbs
+              </p>
+            </div>
+            <button
+              class="btn btn-sm btn-outline-success"
+              onclick="markMealComplete(this)"
+            >
+              <i class="fas fa-check"></i> Done
+            </button>
+          </div>
+        </div>
+
+        <!-- Hydration & Tips -->
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <i class="fas fa-tint text-primary me-2"></i> Hydration Goal
+                </h5>
+                <h2 class="mb-3">
+                  3 Liters <small class="text-muted">/ day</small>
+                </h2>
+                <div class="progress mb-2" style="height: 25px">
+                  <div class="progress-bar bg-info" style="width: 60%">
+                    1.8L
+                  </div>
+                </div>
+                <p class="text-muted mb-0">
+                  <small>Drink water regularly throughout the day</small>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <i class="fas fa-lightbulb text-warning me-2"></i> Nutrition
+                  Tips
+                </h5>
+                <ul class="mb-0">
+                  <li>Eat protein with every meal</li>
+                  <li>Stay hydrated before, during, and after workouts</li>
+                  <li>Include colorful vegetables for vitamins</li>
+                  <li>Time your carbs around workouts</li>
+                  <li>Don't skip meals</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meal Prep Ideas -->
+        <div class="card shadow-sm border-0 mt-4">
+          <div class="card-header bg-white">
+            <h5 class="mb-0">
+              <i class="fas fa-clipboard-list me-2"></i> Meal Prep Suggestions
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <h6>Sunday Prep</h6>
+                <ul class="small">
+                  <li>Cook 2kg chicken breast</li>
+                  <li>Prepare 5 cups rice</li>
+                  <li>Chop vegetables</li>
+                  <li>Boil eggs (12)</li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <h6>Wednesday Refresh</h6>
+                <ul class="small">
+                  <li>Grill fish portions</li>
+                  <li>Steam vegetables</li>
+                  <li>Prepare salads</li>
+                  <li>Mix protein shakes</li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <h6>Daily Tasks</h6>
+                <ul class="small">
+                  <li>Cut fresh fruits</li>
+                  <li>Pack snacks</li>
+                  <li>Fill water bottles</li>
+                  <li>Log meals</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      // Protect page
+      Auth.requireLogin();
+
+      function markMealComplete(button) {
+        const item = button.closest(".exercise-item");
+        item.style.opacity = "0.6";
+        button.innerHTML = '<i class="fas fa-check"></i> Completed';
+        button.classList.remove("btn-outline-success");
+        button.classList.add("btn-success");
+        button.disabled = true;
+      }
+
+      function regenerateDietPlan() {
+        if (
+          confirm(
+            "Are you sure you want to regenerate your diet plan? This will create a new plan based on your current goals and preferences."
+          )
+        ) {
+          alert(
+            "Diet plan regenerated successfully!\n\nIn the real app, the system would:\n• Analyze your current progress\n• Consider your dietary restrictions\n• Calculate new macros\n• Generate meal suggestions"
+          );
+          location.reload();
+        }
+      }
+    </script>
+  </body>
+</html>

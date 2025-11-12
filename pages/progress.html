@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress - FitCore</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="dashboard.html">
+          <i class="fas fa-dumbbell"></i> FitCore
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-user-circle"></i>
+                <span class="user-name">User</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="settings.html"
+                    ><i class="fas fa-user-cog me-2"></i> Profile Settings</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-bell me-2"></i> Notifications</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#" data-logout
+                    ><i class="fas fa-sign-out-alt me-2"></i> Logout</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="mt-4">
+          <a href="dashboard.html" class="sidebar-link">
+            <i class="fas fa-home me-2"></i> Dashboard
+          </a>
+          <a href="workout-plan.html" class="sidebar-link">
+            <i class="fas fa-calendar-alt me-2"></i> Workout Plan
+          </a>
+          <a href="diet-plan.html" class="sidebar-link">
+            <i class="fas fa-utensils me-2"></i> Diet Plan
+          </a>
+          <a href="gym-finder.html" class="sidebar-link" id="gymFinderLink">
+            <i class="fas fa-search-location me-2"></i> Find Gyms
+          </a>
+          <a href="ai-assistant.html" class="sidebar-link" id="aiAssistantLink">
+            <i class="fas fa-robot me-2"></i> AI Assistant
+          </a>
+          <a href="progress.html" class="sidebar-link active">
+            <i class="fas fa-chart-line me-2"></i> Progress
+          </a>
+          <a href="settings.html" class="sidebar-link">
+            <i class="fas fa-cog me-2"></i> Settings
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <h1 class="mb-4">
+          <i class="fas fa-chart-line me-2"></i> Your Progress
+        </h1>
+
+        <!-- Summary Stats -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="text-muted mb-1">Total Workouts</p>
+                  <h3 class="mb-0">48</h3>
+                </div>
+                <div class="stat-icon bg-primary text-white">
+                  <i class="fas fa-dumbbell"></i>
+                </div>
+              </div>
+              <p class="text-success mb-0 mt-2">
+                <small><i class="fas fa-arrow-up me-1"></i>+8 this month</small>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="text-muted mb-1">Weight Change</p>
+                  <h3 class="mb-0">-5 kg</h3>
+                </div>
+                <div class="stat-icon bg-success text-white">
+                  <i class="fas fa-weight"></i>
+                </div>
+              </div>
+              <p class="text-muted mb-0 mt-2">
+                <small>From 80kg to 75kg</small>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="text-muted mb-1">Active Days</p>
+                  <h3 class="mb-0">36</h3>
+                </div>
+                <div class="stat-icon bg-warning text-white">
+                  <i class="fas fa-calendar-check"></i>
+                </div>
+              </div>
+              <p class="text-muted mb-0 mt-2"><small>Last 60 days</small></p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="text-muted mb-1">Current Streak</p>
+                  <h3 class="mb-0">12 🔥</h3>
+                </div>
+                <div class="stat-icon bg-danger text-white">
+                  <i class="fas fa-fire"></i>
+                </div>
+              </div>
+              <p class="text-muted mb-0 mt-2"><small>Best: 21 days</small></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weight Progress Chart -->
+        <div class="progress-chart mb-4">
+          <h4 class="mb-4">
+            <i class="fas fa-chart-line me-2"></i> Weight Progress (Last 3
+            Months)
+          </h4>
+          <div
+            class="chart-container"
+            style="position: relative; height: 300px"
+          >
+            <canvas id="weightChart"></canvas>
+          </div>
+          <div class="text-center mt-3">
+            <small class="text-muted"
+              >Starting Weight: 80kg | Current: 75kg | Goal: 72kg</small
+            >
+          </div>
+        </div>
+
+        <!-- Body Measurements -->
+        <div class="row g-4 mb-4">
+          <div class="col-lg-6">
+            <div class="card shadow-sm border-0">
+              <div class="card-header bg-white">
+                <h5 class="mb-0">
+                  <i class="fas fa-ruler me-2"></i> Body Measurements
+                </h5>
+              </div>
+              <div class="card-body">
+                <table class="table table-hover mb-0">
+                  <thead>
+                    <tr>
+                      <th>Measurement</th>
+                      <th>Start</th>
+                      <th>Current</th>
+                      <th>Change</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Chest</td>
+                      <td>98 cm</td>
+                      <td>102 cm</td>
+                      <td class="text-success">+4 cm</td>
+                    </tr>
+                    <tr>
+                      <td>Waist</td>
+                      <td>88 cm</td>
+                      <td>82 cm</td>
+                      <td class="text-success">-6 cm</td>
+                    </tr>
+                    <tr>
+                      <td>Arms</td>
+                      <td>32 cm</td>
+                      <td>35 cm</td>
+                      <td class="text-success">+3 cm</td>
+                    </tr>
+                    <tr>
+                      <td>Thighs</td>
+                      <td>56 cm</td>
+                      <td>58 cm</td>
+                      <td class="text-success">+2 cm</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="text-end mt-3">
+                  <button
+                    class="btn btn-sm btn-primary"
+                    onclick="updateMeasurements()"
+                  >
+                    <i class="fas fa-plus me-2"></i> Add Measurement
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card shadow-sm border-0">
+              <div class="card-header bg-white">
+                <h5 class="mb-0">
+                  <i class="fas fa-trophy me-2"></i> Achievements
+                </h5>
+              </div>
+              <div class="card-body">
+                <div class="achievement-item mb-3 p-3 bg-light rounded">
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="achievement-icon bg-warning text-white rounded-circle p-3 me-3"
+                    >
+                      <i class="fas fa-medal fa-2x"></i>
+                    </div>
+                    <div>
+                      <h6 class="mb-0">First Workout Complete</h6>
+                      <small class="text-muted"
+                        >Completed your first workout session</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="achievement-item mb-3 p-3 bg-light rounded">
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="achievement-icon bg-success text-white rounded-circle p-3 me-3"
+                    >
+                      <i class="fas fa-fire fa-2x"></i>
+                    </div>
+                    <div>
+                      <h6 class="mb-0">10-Day Streak</h6>
+                      <small class="text-muted"
+                        >Worked out 10 days in a row</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="achievement-item mb-3 p-3 bg-light rounded">
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="achievement-icon bg-primary text-white rounded-circle p-3 me-3"
+                    >
+                      <i class="fas fa-star fa-2x"></i>
+                    </div>
+                    <div>
+                      <h6 class="mb-0">Goal Crusher</h6>
+                      <small class="text-muted"
+                        >Achieved your first weight loss goal</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="text-muted text-center mt-3">
+                  <small>3 out of 20 achievements unlocked</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workout History -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-header bg-white">
+            <h5 class="mb-0">
+              <i class="fas fa-history me-2"></i> Recent Workouts
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Workout</th>
+                    <th>Duration</th>
+                    <th>Calories</th>
+                    <th>Exercises</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Nov 12, 2025</td>
+                    <td>Chest & Triceps</td>
+                    <td>65 min</td>
+                    <td>420 kcal</td>
+                    <td>5 exercises</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Nov 11, 2025</td>
+                    <td>Back & Biceps</td>
+                    <td>58 min</td>
+                    <td>390 kcal</td>
+                    <td>5 exercises</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Nov 10, 2025</td>
+                    <td>Legs</td>
+                    <td>72 min</td>
+                    <td>480 kcal</td>
+                    <td>5 exercises</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Nov 8, 2025</td>
+                    <td>Shoulders</td>
+                    <td>45 min</td>
+                    <td>310 kcal</td>
+                    <td>4 exercises</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Nov 7, 2025</td>
+                    <td>Full Body</td>
+                    <td>55 min</td>
+                    <td>380 kcal</td>
+                    <td>4 exercises</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personal Records -->
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-white">
+            <h5 class="mb-0">
+              <i class="fas fa-crown me-2"></i> Personal Records
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3 text-center mb-3">
+                <div class="p-3 bg-light rounded">
+                  <i class="fas fa-weight-hanging fa-2x text-primary mb-2"></i>
+                  <h4 class="mb-0">120 kg</h4>
+                  <small class="text-muted">Bench Press</small>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="p-3 bg-light rounded">
+                  <i class="fas fa-weight-hanging fa-2x text-success mb-2"></i>
+                  <h4 class="mb-0">160 kg</h4>
+                  <small class="text-muted">Squat</small>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="p-3 bg-light rounded">
+                  <i class="fas fa-weight-hanging fa-2x text-warning mb-2"></i>
+                  <h4 class="mb-0">180 kg</h4>
+                  <small class="text-muted">Deadlift</small>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="p-3 bg-light rounded">
+                  <i class="fas fa-running fa-2x text-danger mb-2"></i>
+                  <h4 class="mb-0">5:30</h4>
+                  <small class="text-muted">5K Run Time</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      // Protect page
+      Auth.requireLogin();
+
+      function updateMeasurements() {
+        alert(
+          "Add Measurement Feature\n\nIn the full version, this would open a modal to:\n• Add new measurements\n• Update existing data\n• Track progress over time\n• Set measurement goals"
+        );
+      }
+
+      // Simple chart simulation
+      const ctx = document.getElementById("weightChart");
+      if (ctx) {
+        // In real app, use Chart.js for actual charts
+        ctx.innerHTML =
+          '<div class="text-center p-5"><i class="fas fa-chart-line fa-5x text-muted mb-3"></i><p class="text-muted">Chart visualization would appear here<br><small>Showing weight trend: 80kg → 75kg over 90 days</small></p></div>';
+      }
+    </script>
+  </body>
+</html>

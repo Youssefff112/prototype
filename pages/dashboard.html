@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - FitCore</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="dashboard.html">
+          <i class="fas fa-dumbbell"></i> FitCore
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-user-circle"></i>
+                <span id="userName">User</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="settings.html">
+                    <i class="fas fa-user-cog me-2"></i> Profile Settings
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-bell me-2"></i> Notifications
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt me-2"></i> Logout
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="mt-4">
+          <a href="dashboard.html" class="sidebar-link active">
+            <i class="fas fa-home me-2"></i> Dashboard
+          </a>
+          <a href="workout-plan.html" class="sidebar-link">
+            <i class="fas fa-calendar-alt me-2"></i> Workout Plan
+          </a>
+          <a href="diet-plan.html" class="sidebar-link">
+            <i class="fas fa-utensils me-2"></i> Diet Plan
+          </a>
+          <a href="gym-finder.html" class="sidebar-link" id="gymFinderLink">
+            <i class="fas fa-search-location me-2"></i> Find Gyms
+          </a>
+          <a
+            href="ai-assistant.html"
+            class="sidebar-link d-none"
+            id="aiAssistantLink"
+          >
+            <i class="fas fa-robot me-2"></i> AI Assistant
+          </a>
+          <a href="progress.html" class="sidebar-link">
+            <i class="fas fa-chart-line me-2"></i> Progress
+          </a>
+          <a href="settings.html" class="sidebar-link">
+            <i class="fas fa-cog me-2"></i> Settings
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <h1 class="mb-4">
+          Welcome back, <span id="userFirstName">User</span>! 💪
+        </h1>
+
+        <!-- Stats Overview -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="text-muted mb-1">Workouts This Week</p>
+                  <h3 class="mb-0">4/5</h3>
+                </div>
+                <div class="stat-icon bg-primary text-white">
+                  <i class="fas fa-dumbbell"></i>
+                </div>
+              </div>
+              <div class="progress mt-3" style="height: 8px">
+                <div class="progress-bar bg-primary" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="text-muted mb-1">Current Weight</p>
+                  <h3 class="mb-0">75 kg</h3>
+                </div>
+                <div class="stat-icon bg-success text-white">
+                  <i class="fas fa-weight"></i>
+                </div>
+              </div>
+              <p class="text-success mb-0 mt-2">
+                <small>-2kg this month</small>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="text-muted mb-1">Calories Today</p>
+                  <h3 class="mb-0">1850</h3>
+                </div>
+                <div class="stat-icon bg-warning text-white">
+                  <i class="fas fa-fire"></i>
+                </div>
+              </div>
+              <p class="text-muted mb-0 mt-2"><small>Goal: 2000 kcal</small></p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="text-muted mb-1">Streak Days</p>
+                  <h3 class="mb-0">12 🔥</h3>
+                </div>
+                <div class="stat-icon bg-danger text-white">
+                  <i class="fas fa-trophy"></i>
+                </div>
+              </div>
+              <p class="text-muted mb-0 mt-2"><small>Keep it up!</small></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Today's Workout -->
+        <div class="row g-4 mb-4">
+          <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+              <div class="card-body p-4">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-4"
+                >
+                  <h4 class="mb-0">
+                    <i class="fas fa-calendar-check me-2"></i> Today's Workout
+                  </h4>
+                  <span class="badge bg-primary">Wednesday</span>
+                </div>
+                <div class="workout-day">
+                  <h5 class="mb-3">Upper Body - Push Day</h5>
+                  <div class="exercise-item">
+                    <div>
+                      <h6 class="mb-1">Bench Press</h6>
+                      <small class="text-muted">4 sets × 8-10 reps</small>
+                    </div>
+                    <button class="btn btn-sm btn-outline-success">
+                      <i class="fas fa-check"></i> Done
+                    </button>
+                  </div>
+                  <div class="exercise-item">
+                    <div>
+                      <h6 class="mb-1">Overhead Press</h6>
+                      <small class="text-muted">3 sets × 10-12 reps</small>
+                    </div>
+                    <button class="btn btn-sm btn-outline-success">
+                      <i class="fas fa-check"></i> Done
+                    </button>
+                  </div>
+                  <div class="exercise-item">
+                    <div>
+                      <h6 class="mb-1">Incline Dumbbell Press</h6>
+                      <small class="text-muted">3 sets × 10-12 reps</small>
+                    </div>
+                    <button class="btn btn-sm btn-outline-success">
+                      <i class="fas fa-check"></i> Done
+                    </button>
+                  </div>
+                  <div class="exercise-item">
+                    <div>
+                      <h6 class="mb-1">Tricep Dips</h6>
+                      <small class="text-muted">3 sets × 12-15 reps</small>
+                    </div>
+                    <button class="btn btn-sm btn-outline-success">
+                      <i class="fas fa-check"></i> Done
+                    </button>
+                  </div>
+                  <div class="text-center mt-4">
+                    <a href="ai-assistant.html" class="btn btn-primary btn-lg">
+                      <i class="fas fa-play me-2"></i> Start Workout with AI
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions & Tips -->
+          <div class="col-lg-4">
+            <div class="card shadow-sm border-0 mb-4">
+              <div class="card-body">
+                <h5 class="card-title mb-3">
+                  <i class="fas fa-bolt me-2"></i> Quick Actions
+                </h5>
+                <div class="d-grid gap-2">
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="window.location.href='workout-plan.html'"
+                  >
+                    <i class="fas fa-calendar-alt me-2"></i> View Full Plan
+                  </button>
+                  <button
+                    class="btn btn-outline-success"
+                    onclick="window.location.href='diet-plan.html'"
+                  >
+                    <i class="fas fa-utensils me-2"></i> Today's Meals
+                  </button>
+                  <button
+                    class="btn btn-outline-info"
+                    onclick="window.location.href='gym-finder.html'"
+                    id="gymFinderBtn"
+                  >
+                    <i class="fas fa-search me-2"></i> Find Nearby Gyms
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card shadow-sm border-0">
+              <div class="card-body">
+                <h5 class="card-title mb-3">
+                  <i class="fas fa-lightbulb me-2"></i> Daily Tip
+                </h5>
+                <p class="mb-0">
+                  Remember to stay hydrated! Aim for at least 8 glasses of water
+                  throughout the day, especially before and after workouts.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weekly Progress Chart -->
+        <div class="progress-chart">
+          <h4 class="mb-4">
+            <i class="fas fa-chart-bar me-2"></i> This Week's Activity
+          </h4>
+          <div class="row text-center">
+            <div class="col">
+              <div class="mb-2"><strong>Mon</strong></div>
+              <div
+                class="progress"
+                style="height: 100px; width: 40px; margin: 0 auto"
+              >
+                <div
+                  class="progress-bar bg-success"
+                  style="width: 100%; writing-mode: bt-lr"
+                  role="progressbar"
+                ></div>
+              </div>
+              <small class="text-muted mt-2 d-block">✓</small>
+            </div>
+            <div class="col">
+              <div class="mb-2"><strong>Tue</strong></div>
+              <div
+                class="progress"
+                style="height: 100px; width: 40px; margin: 0 auto"
+              >
+                <div
+                  class="progress-bar bg-success"
+                  style="width: 100%; writing-mode: bt-lr"
+                  role="progressbar"
+                ></div>
+              </div>
+              <small class="text-muted mt-2 d-block">✓</small>
+            </div>
+            <div class="col">
+              <div class="mb-2"><strong>Wed</strong></div>
+              <div
+                class="progress"
+                style="height: 100px; width: 40px; margin: 0 auto"
+              >
+                <div
+                  class="progress-bar bg-primary"
+                  style="width: 60%; writing-mode: bt-lr"
+                  role="progressbar"
+                ></div>
+              </div>
+              <small class="text-muted mt-2 d-block">Today</small>
+            </div>
+            <div class="col">
+              <div class="mb-2"><strong>Thu</strong></div>
+              <div
+                class="progress"
+                style="height: 100px; width: 40px; margin: 0 auto"
+              >
+                <div
+                  class="progress-bar bg-secondary"
+                  style="width: 0%; writing-mode: bt-lr"
+                  role="progressbar"
+                ></div>
+              </div>
+              <small class="text-muted mt-2 d-block">-</small>
+            </div>
+            <div class="col">
+              <div class="mb-2"><strong>Fri</strong></div>
+              <div
+                class="progress"
+                style="height: 100px; width: 40px; margin: 0 auto"
+              >
+                <div
+                  class="progress-bar bg-secondary"
+                  style="width: 0%; writing-mode: bt-lr"
+                  role="progressbar"
+                ></div>
+              </div>
+              <small class="text-muted mt-2 d-block">-</small>
+            </div>
+            <div class="col">
+              <div class="mb-2"><strong>Sat</strong></div>
+              <div
+                class="progress"
+                style="height: 100px; width: 40px; margin: 0 auto"
+              >
+                <div
+                  class="progress-bar bg-secondary"
+                  style="width: 0%; writing-mode: bt-lr"
+                  role="progressbar"
+                ></div>
+              </div>
+              <small class="text-muted mt-2 d-block">-</small>
+            </div>
+            <div class="col">
+              <div class="mb-2"><strong>Sun</strong></div>
+              <div
+                class="progress"
+                style="height: 100px; width: 40px; margin: 0 auto"
+              >
+                <div
+                  class="progress-bar bg-secondary"
+                  style="width: 0%; writing-mode: bt-lr"
+                  role="progressbar"
+                ></div>
+              </div>
+              <small class="text-muted mt-2 d-block">-</small>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+      // Protect page - require login
+      Auth.requireLogin();
+
+      // Get current user and display info
+      const currentUser = Auth.getCurrentUser();
+      if (currentUser) {
+        document.getElementById(
+          "userName"
+        ).textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+        document.getElementById("userFirstName").textContent =
+          currentUser.firstName;
+      }
+
+      // Logout handler
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          Auth.logout();
+          window.location.href = "../index.html";
+        });
+
+      // Check user training type and show appropriate links
+      if (currentUser && currentUser.trainingType) {
+        if (currentUser.trainingType === "offline") {
+          document.getElementById("gymFinderLink").classList.add("d-none");
+          document.getElementById("gymFinderBtn").classList.add("d-none");
+          document.getElementById("aiAssistantLink").classList.remove("d-none");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - FitCore</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="text-center mb-4">
+          <a href="../index.html" class="text-decoration-none">
+            <h1 class="display-6">
+              <i class="fas fa-dumbbell text-gradient"></i> FitCore
+            </h1>
+          </a>
+        </div>
+        <h2 class="text-center">Welcome Back</h2>
+        <p class="text-center text-muted mb-4">
+          Login to continue your fitness journey
+        </p>
+
+        <div
+          id="errorMessage"
+          class="alert alert-danger d-none"
+          role="alert"
+        ></div>
+        <div
+          id="successMessage"
+          class="alert alert-success d-none"
+          role="alert"
+        ></div>
+
+        <form id="loginForm">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              class="form-control form-control-lg"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+            <small class="text-muted">
+              Demo: user@fitcore.com (password: user123) or admin@fitcore.com
+              (password: admin123)
+            </small>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="remember" />
+            <label class="form-check-label" for="remember">Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+            <i class="fas fa-sign-in-alt me-2"></i> Login
+          </button>
+          <div class="text-center">
+            <a href="#" class="text-decoration-none">Forgot Password?</a>
+          </div>
+        </form>
+
+        <hr class="my-4" />
+
+        <p class="text-center mb-0">
+          Don't have an account?
+          <a href="register.html" class="text-decoration-none fw-bold"
+            >Sign Up</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+      // Check if already logged in
+      if (Auth.isLoggedIn()) {
+        const user = Auth.getCurrentUser();
+        if (user.role === "admin") {
+          window.location.href = "admin-dashboard.html";
+        } else {
+          window.location.href = "dashboard.html";
+        }
+      }
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          const result = Auth.login(email, password);
+
+          if (result.success) {
+            showSuccess(result.message);
+            // Redirect based on role
+            setTimeout(() => {
+              if (result.user.role === "admin") {
+                window.location.href = "admin-dashboard.html";
+              } else {
+                // Check if user has completed onboarding
+                if (!result.user.profile) {
+                  window.location.href = "onboarding.html";
+                } else {
+                  window.location.href = "dashboard.html";
+                }
+              }
+            }, 500);
+          } else {
+            showError(result.message);
+          }
+        });
+
+      function showError(message) {
+        const errorDiv = document.getElementById("errorMessage");
+        errorDiv.textContent = message;
+        errorDiv.classList.remove("d-none");
+        setTimeout(() => errorDiv.classList.add("d-none"), 5000);
+      }
+
+      function showSuccess(message) {
+        const successDiv = document.getElementById("successMessage");
+        successDiv.textContent = message;
+        successDiv.classList.remove("d-none");
+      }
+    </script>
+  </body>
+</html>

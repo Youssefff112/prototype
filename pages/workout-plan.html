@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workout Plan - FitCore</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="dashboard.html">
+          <i class="fas fa-dumbbell"></i> FitCore
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-user-circle"></i>
+                <span id="userName">User</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="settings.html"
+                    ><i class="fas fa-user-cog me-2"></i> Profile Settings</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-bell me-2"></i> Notifications</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#" id="logoutBtn"
+                    ><i class="fas fa-sign-out-alt me-2"></i> Logout</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="mt-4">
+          <a href="dashboard.html" class="sidebar-link">
+            <i class="fas fa-home me-2"></i> Dashboard
+          </a>
+          <a href="workout-plan.html" class="sidebar-link active">
+            <i class="fas fa-calendar-alt me-2"></i> Workout Plan
+          </a>
+          <a href="diet-plan.html" class="sidebar-link">
+            <i class="fas fa-utensils me-2"></i> Diet Plan
+          </a>
+          <a href="gym-finder.html" class="sidebar-link">
+            <i class="fas fa-search-location me-2"></i> Find Gyms
+          </a>
+          <a href="progress.html" class="sidebar-link">
+            <i class="fas fa-chart-line me-2"></i> Progress
+          </a>
+          <a href="settings.html" class="sidebar-link">
+            <i class="fas fa-cog me-2"></i> Settings
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h1 class="mb-0">
+            <i class="fas fa-calendar-alt me-2"></i> Your Workout Plan
+          </h1>
+          <button class="btn btn-primary" onclick="regeneratePlan()">
+            <i class="fas fa-sync-alt me-2"></i> Regenerate Plan
+          </button>
+        </div>
+
+        <!-- Plan Overview -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-4">
+            <div class="stat-card text-center">
+              <h6 class="text-muted">Current Goal</h6>
+              <h4 class="text-primary mb-0">Muscle Gain</h4>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stat-card text-center">
+              <h6 class="text-muted">Experience Level</h6>
+              <h4 class="text-success mb-0">Intermediate</h4>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stat-card text-center">
+              <h6 class="text-muted">Weekly Workouts</h6>
+              <h4 class="text-warning mb-0">5 Days</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weekly Schedule -->
+        <div class="workout-day">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+              <i class="fas fa-calendar-day me-2"></i> Monday - Chest & Triceps
+            </h4>
+            <span class="badge bg-success">Completed</span>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Flat Bench Press</h6>
+              <small class="text-muted"
+                >4 sets × 8-10 reps | Target: Chest</small
+              >
+            </div>
+            <div class="d-flex gap-2 align-items-center">
+              <button
+                class="btn btn-sm btn-outline-info"
+                onclick="showExerciseInfo('Bench Press')"
+              >
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-success">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Incline Dumbbell Press</h6>
+              <small class="text-muted"
+                >3 sets × 10-12 reps | Target: Upper Chest</small
+              >
+            </div>
+            <div class="d-flex gap-2 align-items-center">
+              <button
+                class="btn btn-sm btn-outline-info"
+                onclick="showExerciseInfo('Incline Dumbbell Press')"
+              >
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-success">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Cable Flyes</h6>
+              <small class="text-muted"
+                >3 sets × 12-15 reps | Target: Inner Chest</small
+              >
+            </div>
+            <div class="d-flex gap-2 align-items-center">
+              <button
+                class="btn btn-sm btn-outline-info"
+                onclick="showExerciseInfo('Cable Flyes')"
+              >
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-success">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Tricep Dips</h6>
+              <small class="text-muted"
+                >3 sets × 10-12 reps | Target: Triceps</small
+              >
+            </div>
+            <div class="d-flex gap-2 align-items-center">
+              <button
+                class="btn btn-sm btn-outline-info"
+                onclick="showExerciseInfo('Tricep Dips')"
+              >
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-success">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Overhead Tricep Extension</h6>
+              <small class="text-muted"
+                >3 sets × 12-15 reps | Target: Triceps</small
+              >
+            </div>
+            <div class="d-flex gap-2 align-items-center">
+              <button
+                class="btn btn-sm btn-outline-info"
+                onclick="showExerciseInfo('Tricep Extension')"
+              >
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-success">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="workout-day">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+              <i class="fas fa-calendar-day me-2"></i> Tuesday - Back & Biceps
+            </h4>
+            <span class="badge bg-success">Completed</span>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Deadlifts</h6>
+              <small class="text-muted"
+                >4 sets × 6-8 reps | Target: Full Back</small
+              >
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-info">
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-success">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Pull-ups</h6>
+              <small class="text-muted"
+                >3 sets × 8-10 reps | Target: Lats</small
+              >
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-info">
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-success">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Barbell Rows</h6>
+              <small class="text-muted"
+                >3 sets × 10-12 reps | Target: Middle Back</small
+              >
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-info">
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-success">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Bicep Curls</h6>
+              <small class="text-muted"
+                >3 sets × 10-12 reps | Target: Biceps</small
+              >
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-info">
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-success">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Hammer Curls</h6>
+              <small class="text-muted"
+                >3 sets × 12-15 reps | Target: Biceps & Forearms</small
+              >
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-info">
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-success">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="workout-day">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+              <i class="fas fa-calendar-day me-2"></i> Wednesday - Legs
+            </h4>
+            <span class="badge bg-primary">Today</span>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Squats</h6>
+              <small class="text-muted"
+                >4 sets × 8-10 reps | Target: Quads, Glutes</small
+              >
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-info">
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-outline-success">
+                <i class="fas fa-check"></i> Mark Done
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Leg Press</h6>
+              <small class="text-muted"
+                >3 sets × 12-15 reps | Target: Quads</small
+              >
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-info">
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-outline-success">
+                <i class="fas fa-check"></i> Mark Done
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Romanian Deadlifts</h6>
+              <small class="text-muted"
+                >3 sets × 10-12 reps | Target: Hamstrings</small
+              >
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-info">
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-outline-success">
+                <i class="fas fa-check"></i> Mark Done
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Leg Curls</h6>
+              <small class="text-muted"
+                >3 sets × 12-15 reps | Target: Hamstrings</small
+              >
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-info">
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-outline-success">
+                <i class="fas fa-check"></i> Mark Done
+              </button>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Calf Raises</h6>
+              <small class="text-muted"
+                >4 sets × 15-20 reps | Target: Calves</small
+              >
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-info">
+                <i class="fas fa-info-circle"></i> Info
+              </button>
+              <button class="btn btn-sm btn-outline-success">
+                <i class="fas fa-check"></i> Mark Done
+              </button>
+            </div>
+          </div>
+          <div class="text-center mt-3">
+            <a href="ai-assistant.html" class="btn btn-success btn-lg">
+              <i class="fas fa-play me-2"></i> Start Today's Workout
+            </a>
+          </div>
+        </div>
+
+        <div class="workout-day">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+              <i class="fas fa-calendar-day me-2"></i> Thursday - Shoulders
+            </h4>
+            <span class="badge bg-secondary">Upcoming</span>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Overhead Press</h6>
+              <small class="text-muted"
+                >4 sets × 8-10 reps | Target: Front Delts</small
+              >
+            </div>
+            <button class="btn btn-sm btn-outline-info">
+              <i class="fas fa-info-circle"></i> Info
+            </button>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Lateral Raises</h6>
+              <small class="text-muted"
+                >3 sets × 12-15 reps | Target: Side Delts</small
+              >
+            </div>
+            <button class="btn btn-sm btn-outline-info">
+              <i class="fas fa-info-circle"></i> Info
+            </button>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Face Pulls</h6>
+              <small class="text-muted"
+                >3 sets × 15-20 reps | Target: Rear Delts</small
+              >
+            </div>
+            <button class="btn btn-sm btn-outline-info">
+              <i class="fas fa-info-circle"></i> Info
+            </button>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Arnold Press</h6>
+              <small class="text-muted"
+                >3 sets × 10-12 reps | Target: All Delts</small
+              >
+            </div>
+            <button class="btn btn-sm btn-outline-info">
+              <i class="fas fa-info-circle"></i> Info
+            </button>
+          </div>
+        </div>
+
+        <div class="workout-day">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+              <i class="fas fa-calendar-day me-2"></i> Friday - Full Body
+            </h4>
+            <span class="badge bg-secondary">Upcoming</span>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Power Cleans</h6>
+              <small class="text-muted"
+                >4 sets × 5-6 reps | Target: Full Body</small
+              >
+            </div>
+            <button class="btn btn-sm btn-outline-info">
+              <i class="fas fa-info-circle"></i> Info
+            </button>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Front Squats</h6>
+              <small class="text-muted"
+                >3 sets × 8-10 reps | Target: Quads, Core</small
+              >
+            </div>
+            <button class="btn btn-sm btn-outline-info">
+              <i class="fas fa-info-circle"></i> Info
+            </button>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Pull-ups</h6>
+              <small class="text-muted">3 sets × Max reps | Target: Back</small>
+            </div>
+            <button class="btn btn-sm btn-outline-info">
+              <i class="fas fa-info-circle"></i> Info
+            </button>
+          </div>
+          <div class="exercise-item">
+            <div>
+              <h6 class="mb-1">Planks</h6>
+              <small class="text-muted"
+                >3 sets × 60 seconds | Target: Core</small
+              >
+            </div>
+            <button class="btn btn-sm btn-outline-info">
+              <i class="fas fa-info-circle"></i> Info
+            </button>
+          </div>
+        </div>
+
+        <div class="workout-day bg-light">
+          <div class="text-center">
+            <h4 class="mb-2">
+              <i class="fas fa-bed me-2"></i> Saturday & Sunday - Rest Days
+            </h4>
+            <p class="text-muted mb-0">
+              Recovery is crucial for muscle growth. Stay hydrated and get
+              adequate sleep!
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+      // Protect page - require login
+      Auth.requireLogin();
+
+      // Get current user
+      const currentUser = Auth.getCurrentUser();
+      if (currentUser) {
+        document.getElementById(
+          "userName"
+        ).textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+      }
+
+      // Logout handler
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          Auth.logout();
+          window.location.href = "../index.html";
+        });
+
+      function showExerciseInfo(exerciseName) {
+        alert(
+          `Exercise: ${exerciseName}\n\nIn the full version, this would show:\n• Detailed instructions\n• Video demonstration\n• Common mistakes to avoid\n• Target muscles visualization\n• Alternative exercises`
+        );
+      }
+
+      function regeneratePlan() {
+        if (
+          confirm(
+            "Are you sure you want to regenerate your workout plan? This will create a new plan based on your current goals and preferences."
+          )
+        ) {
+          alert(
+            "Plan regenerated successfully!\n\nIn the real app, the AI would analyze your:\n• Current progress\n• Goal changes\n• Available equipment\n• Experience level\n\nAnd create an optimized new plan."
+          );
+          location.reload();
+        }
+      }
+    </script>
+  </body>
+</html>

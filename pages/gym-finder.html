@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Gyms - FitCore</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="dashboard.html">
+          <i class="fas fa-dumbbell"></i> FitCore
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-user-circle"></i> John Doe
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-user-cog me-2"></i> Profile Settings</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-bell me-2"></i> Notifications</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="index.html"
+                    ><i class="fas fa-sign-out-alt me-2"></i> Logout</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="mt-4">
+          <a href="dashboard.html" class="sidebar-link">
+            <i class="fas fa-home me-2"></i> Dashboard
+          </a>
+          <a href="workout-plan.html" class="sidebar-link">
+            <i class="fas fa-calendar-alt me-2"></i> Workout Plan
+          </a>
+          <a href="diet-plan.html" class="sidebar-link">
+            <i class="fas fa-utensils me-2"></i> Diet Plan
+          </a>
+          <a href="gym-finder.html" class="sidebar-link active">
+            <i class="fas fa-search-location me-2"></i> Find Gyms
+          </a>
+          <a href="progress.html" class="sidebar-link">
+            <i class="fas fa-chart-line me-2"></i> Progress
+          </a>
+          <a href="#" class="sidebar-link">
+            <i class="fas fa-cog me-2"></i> Settings
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <h1 class="mb-4">
+          <i class="fas fa-search-location me-2"></i> Find Your Perfect Gym
+        </h1>
+
+        <!-- Search & Filters -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-body p-4">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="form-label">Search by Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="gymSearch"
+                  placeholder="Enter gym name..."
+                />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Location</label>
+                <select class="form-select" id="locationFilter">
+                  <option value="">All Locations</option>
+                  <option value="cairo">Cairo</option>
+                  <option value="giza">Giza</option>
+                  <option value="nasr-city">Nasr City</option>
+                  <option value="maadi">Maadi</option>
+                  <option value="heliopolis">Heliopolis</option>
+                  <option value="6-october">6th of October</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Operating Hours</label>
+                <select class="form-select" id="hoursFilter">
+                  <option value="">Any Time</option>
+                  <option value="24-7">24/7 Access</option>
+                  <option value="open-now">Open Now</option>
+                </select>
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <button class="btn btn-primary w-100" onclick="searchGyms()">
+                  <i class="fas fa-search me-2"></i> Search
+                </button>
+              </div>
+            </div>
+
+            <!-- Equipment Filters -->
+            <div class="mt-3">
+              <label class="form-label">Required Equipment:</label>
+              <div class="row g-2">
+                <div class="col-md-2">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="squat-rack"
+                    />
+                    <label class="form-check-label" for="squat-rack"
+                      >Squat Rack</label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="pool" />
+                    <label class="form-check-label" for="pool">Pool</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="sauna"
+                    />
+                    <label class="form-check-label" for="sauna">Sauna</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="cardio"
+                    />
+                    <label class="form-check-label" for="cardio"
+                      >Cardio Area</label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="classes"
+                    />
+                    <label class="form-check-label" for="classes"
+                      >Group Classes</label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="parking"
+                    />
+                    <label class="form-check-label" for="parking"
+                      >Parking</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Count -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">
+            Found <span class="text-primary">24 gyms</span> in your area
+          </h5>
+          <select class="form-select w-auto">
+            <option>Sort by: Distance</option>
+            <option>Sort by: Rating</option>
+            <option>Sort by: Name</option>
+          </select>
+        </div>
+
+        <!-- Gym Listings -->
+        <div class="row g-4" id="gymResults">
+          <!-- Gym Card 1 -->
+          <div class="col-md-6">
+            <div class="gym-card">
+              <div class="gym-card-header">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h4 class="mb-1">Gold's Gym</h4>
+                    <p class="mb-0">
+                      <i class="fas fa-map-marker-alt me-2"></i> Nasr City,
+                      Cairo
+                    </p>
+                  </div>
+                  <span class="badge bg-success">Open Now</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <strong>Operating Hours:</strong>
+                  <p class="mb-0 text-muted">
+                    Mon-Fri: 6:00 AM - 11:00 PM<br />Sat-Sun: 7:00 AM - 9:00 PM
+                  </p>
+                </div>
+                <div class="mb-3">
+                  <strong>Available Equipment:</strong>
+                  <div class="mt-2">
+                    <span class="badge bg-light text-dark me-2"
+                      >Squat Rack</span
+                    >
+                    <span class="badge bg-light text-dark me-2"
+                      >Free Weights</span
+                    >
+                    <span class="badge bg-light text-dark me-2"
+                      >Cardio Machines</span
+                    >
+                    <span class="badge bg-light text-dark me-2">Pool</span>
+                    <span class="badge bg-light text-dark me-2">Sauna</span>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <button
+                    class="btn btn-primary flex-fill"
+                    onclick="viewGymDetails(1)"
+                  >
+                    <i class="fas fa-info-circle me-2"></i> View Details
+                  </button>
+                  <button class="btn btn-outline-secondary">
+                    <i class="fas fa-map me-2"></i> Map
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gym Card 2 -->
+          <div class="col-md-6">
+            <div class="gym-card">
+              <div class="gym-card-header">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h4 class="mb-1">FitZone Premium</h4>
+                    <p class="mb-0">
+                      <i class="fas fa-map-marker-alt me-2"></i> Maadi, Cairo
+                    </p>
+                  </div>
+                  <span class="badge bg-warning text-dark">24/7</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <strong>Operating Hours:</strong>
+                  <p class="mb-0 text-muted">Open 24 hours, 7 days a week</p>
+                </div>
+                <div class="mb-3">
+                  <strong>Available Equipment:</strong>
+                  <div class="mt-2">
+                    <span class="badge bg-light text-dark me-2"
+                      >Olympic Lifting</span
+                    >
+                    <span class="badge bg-light text-dark me-2"
+                      >CrossFit Area</span
+                    >
+                    <span class="badge bg-light text-dark me-2"
+                      >Group Classes</span
+                    >
+                    <span class="badge bg-light text-dark me-2">Parking</span>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <button
+                    class="btn btn-primary flex-fill"
+                    onclick="viewGymDetails(2)"
+                  >
+                    <i class="fas fa-info-circle me-2"></i> View Details
+                  </button>
+                  <button class="btn btn-outline-secondary">
+                    <i class="fas fa-map me-2"></i> Map
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gym Card 3 -->
+          <div class="col-md-6">
+            <div class="gym-card">
+              <div class="gym-card-header">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h4 class="mb-1">Power House Gym</h4>
+                    <p class="mb-0">
+                      <i class="fas fa-map-marker-alt me-2"></i> Heliopolis,
+                      Cairo
+                    </p>
+                  </div>
+                  <span class="badge bg-success">Open Now</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <strong>Operating Hours:</strong>
+                  <p class="mb-0 text-muted">Mon-Sun: 5:00 AM - 11:00 PM</p>
+                </div>
+                <div class="mb-3">
+                  <strong>Available Equipment:</strong>
+                  <div class="mt-2">
+                    <span class="badge bg-light text-dark me-2"
+                      >Heavy Weights</span
+                    >
+                    <span class="badge bg-light text-dark me-2"
+                      >Powerlifting</span
+                    >
+                    <span class="badge bg-light text-dark me-2"
+                      >Personal Training</span
+                    >
+                    <span class="badge bg-light text-dark me-2">Showers</span>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <button
+                    class="btn btn-primary flex-fill"
+                    onclick="viewGymDetails(3)"
+                  >
+                    <i class="fas fa-info-circle me-2"></i> View Details
+                  </button>
+                  <button class="btn btn-outline-secondary">
+                    <i class="fas fa-map me-2"></i> Map
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gym Card 4 -->
+          <div class="col-md-6">
+            <div class="gym-card">
+              <div class="gym-card-header">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h4 class="mb-1">Elite Fitness Club</h4>
+                    <p class="mb-0">
+                      <i class="fas fa-map-marker-alt me-2"></i> 6th of October,
+                      Giza
+                    </p>
+                  </div>
+                  <span class="badge bg-danger">Closed</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <strong>Operating Hours:</strong>
+                  <p class="mb-0 text-muted">
+                    Mon-Fri: 7:00 AM - 10:00 PM<br />Sat-Sun: 8:00 AM - 8:00 PM
+                  </p>
+                </div>
+                <div class="mb-3">
+                  <strong>Available Equipment:</strong>
+                  <div class="mt-2">
+                    <span class="badge bg-light text-dark me-2">Pool</span>
+                    <span class="badge bg-light text-dark me-2">Spa</span>
+                    <span class="badge bg-light text-dark me-2"
+                      >Yoga Studio</span
+                    >
+                    <span class="badge bg-light text-dark me-2">Cafe</span>
+                    <span class="badge bg-light text-dark me-2">Sauna</span>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <button
+                    class="btn btn-primary flex-fill"
+                    onclick="viewGymDetails(4)"
+                  >
+                    <i class="fas fa-info-circle me-2"></i> View Details
+                  </button>
+                  <button class="btn btn-outline-secondary">
+                    <i class="fas fa-map me-2"></i> Map
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-5">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#"
+                ><i class="fas fa-chevron-left"></i
+              ></a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#"
+                ><i class="fas fa-chevron-right"></i
+              ></a>
+            </li>
+          </ul>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+      // Protect page - require login
+      Auth.requireLogin();
+
+      // Get current user
+      const currentUser = Auth.getCurrentUser();
+      if (currentUser) {
+        const userNameEl = document
+          .querySelector("#userDropdown")
+          .textContent.replace(/\s+/g, " ")
+          .trim();
+        if (userNameEl.includes("John Doe")) {
+          document.querySelector(
+            "#userDropdown"
+          ).innerHTML = `<i class="fas fa-user-circle"></i> ${currentUser.firstName} ${currentUser.lastName}`;
+        }
+      }
+
+      // Logout handler - find and add click listener
+      const logoutLink = Array.from(
+        document.querySelectorAll(".dropdown-item")
+      ).find((el) => el.textContent.includes("Logout"));
+      if (logoutLink) {
+        logoutLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          Auth.logout();
+          window.location.href = "../index.html";
+        });
+      }
+
+      function searchGyms() {
+        alert("Searching gyms with your filters...");
+        // In real implementation, this would filter the results
+      }
+
+      function viewGymDetails(gymId) {
+        alert(
+          "Viewing details for gym #" +
+            gymId +
+            "\n\nIn the full version, this would show:\n- Complete address\n- Interactive map\n- Full equipment list\n- Photos\n- Contact information\n- User reviews"
+        );
+      }
+    </script>
+  </body>
+</html>

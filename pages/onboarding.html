@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Started - FitCore</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">
+          <i class="fas fa-dumbbell"></i> FitCore
+        </a>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <div class="onboarding-container">
+        <!-- Progress Steps -->
+        <div class="progress-steps mb-5">
+          <div class="progress-step active" data-step="1">1</div>
+          <div class="progress-step" data-step="2">2</div>
+          <div class="progress-step" data-step="3">3</div>
+          <div class="progress-step" data-step="4">4</div>
+        </div>
+
+        <!-- Step 1: Training Type -->
+        <div class="onboarding-step" id="step1">
+          <h2 class="mb-4">How do you want to train?</h2>
+          <form id="trainingTypeForm">
+            <p class="text-muted mb-4">
+              Choose your preferred training style. You can change this later in
+              settings.
+            </p>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="trainingType"
+                  id="onsite"
+                  value="onsite"
+                  checked
+                />
+                <label
+                  class="btn btn-outline-primary w-100 h-100 py-5"
+                  for="onsite"
+                >
+                  <i class="fas fa-building fa-4x d-block mb-3"></i>
+                  <h4>On-Site Training</h4>
+                  <p class="mb-0">
+                    Find gyms and get personalized workout plans for gym
+                    equipment
+                  </p>
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="trainingType"
+                  id="offline"
+                  value="offline"
+                />
+                <label
+                  class="btn btn-outline-primary w-100 h-100 py-5"
+                  for="offline"
+                >
+                  <i class="fas fa-home fa-4x d-block mb-3"></i>
+                  <h4>Home Workouts</h4>
+                  <p class="mb-0">
+                    Train at home with AI-powered form correction and guidance
+                  </p>
+                </label>
+              </div>
+            </div>
+            <div class="text-end mt-4">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Next <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 2: Personal Info -->
+        <div class="onboarding-step d-none" id="step2">
+          <h2 class="mb-4">Tell us about yourself</h2>
+          <form id="personalInfoForm">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="age" class="form-label">Age</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="age"
+                  placeholder="25"
+                  min="13"
+                  max="100"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="gender" class="form-label">Gender</label>
+                <select class="form-select" id="gender" required>
+                  <option value="">Select...</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="height" class="form-label">Height (cm)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="height"
+                  placeholder="175"
+                  min="100"
+                  max="250"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="weight" class="form-label"
+                  >Current Weight (kg)</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="weight"
+                  placeholder="70"
+                  min="30"
+                  max="300"
+                  required
+                />
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button
+                type="button"
+                class="btn btn-secondary btn-lg"
+                onclick="previousStep()"
+              >
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button type="submit" class="btn btn-primary btn-lg">
+                Next <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 3: Goals -->
+        <div class="onboarding-step d-none" id="step3">
+          <h2 class="mb-4">What are your fitness goals?</h2>
+          <form id="goalsForm">
+            <div class="mb-4">
+              <label class="form-label">Primary Goal</label>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="goal"
+                    id="weightLoss"
+                    value="weight_loss"
+                    checked
+                  />
+                  <label
+                    class="btn btn-outline-primary w-100 h-100 py-4"
+                    for="weightLoss"
+                  >
+                    <i class="fas fa-weight fa-3x d-block mb-2"></i>
+                    <strong>Weight Loss</strong>
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="goal"
+                    id="muscleGain"
+                    value="muscle_gain"
+                  />
+                  <label
+                    class="btn btn-outline-primary w-100 h-100 py-4"
+                    for="muscleGain"
+                  >
+                    <i class="fas fa-dumbbell fa-3x d-block mb-2"></i>
+                    <strong>Muscle Gain</strong>
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="goal"
+                    id="maintenance"
+                    value="maintenance"
+                  />
+                  <label
+                    class="btn btn-outline-primary w-100 h-100 py-4"
+                    for="maintenance"
+                  >
+                    <i class="fas fa-heartbeat fa-3x d-block mb-2"></i>
+                    <strong>Maintenance</strong>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="experience" class="form-label"
+                >Experience Level</label
+              >
+              <select class="form-select" id="experience" required>
+                <option value="">Select your level...</option>
+                <option value="beginner">Beginner - New to fitness</option>
+                <option value="intermediate">
+                  Intermediate - 6-12 months experience
+                </option>
+                <option value="advanced">
+                  Advanced - Over 1 year experience
+                </option>
+              </select>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button
+                type="button"
+                class="btn btn-secondary btn-lg"
+                onclick="previousStep()"
+              >
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button type="submit" class="btn btn-primary btn-lg">
+                Next <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 4: Diet Preferences & Equipment -->
+        <div class="onboarding-step d-none" id="step4">
+          <h2 class="mb-4">Final Details</h2>
+          <form id="finalForm">
+            <h5 class="mb-3">Dietary Preferences</h5>
+            <div class="mb-3">
+              <label for="dietType" class="form-label">Diet Type</label>
+              <select class="form-select" id="dietType" required>
+                <option value="none">No Restrictions</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="keto">Keto</option>
+                <option value="paleo">Paleo</option>
+                <option value="gluten_free">Gluten-Free</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="allergies" class="form-label"
+                >Allergies (Optional)</label
+              >
+              <textarea
+                class="form-control"
+                id="allergies"
+                rows="2"
+                placeholder="List any food allergies or intolerances..."
+              ></textarea>
+            </div>
+
+            <hr class="my-4" />
+
+            <div id="equipmentSection">
+              <h5 class="mb-3">Available Equipment</h5>
+              <p class="text-muted mb-3">Select equipment you have at home:</p>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="bodyweight"
+                      value="bodyweight"
+                      checked
+                      disabled
+                    />
+                    <label class="form-check-label" for="bodyweight"
+                      >Bodyweight Only</label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="dumbbells"
+                      value="dumbbells"
+                    />
+                    <label class="form-check-label" for="dumbbells"
+                      >Dumbbells</label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="resistanceBands"
+                      value="resistance_bands"
+                    />
+                    <label class="form-check-label" for="resistanceBands"
+                      >Resistance Bands</label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="pullupBar"
+                      value="pullup_bar"
+                    />
+                    <label class="form-check-label" for="pullupBar"
+                      >Pull-up Bar</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="gymPreferences" class="d-none">
+              <h5 class="mb-3">Gym Preferences</h5>
+              <div class="mb-3">
+                <label for="preferredLocation" class="form-label"
+                  >Preferred Location</label
+                >
+                <select class="form-select" id="preferredLocation">
+                  <option value="">Select area...</option>
+                  <option value="cairo">Cairo</option>
+                  <option value="giza">Giza</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button
+                type="button"
+                class="btn btn-secondary btn-lg"
+                onclick="previousStep()"
+              >
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button type="submit" class="btn btn-success btn-lg">
+                Complete Setup <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+      // Require login
+      Auth.requireLogin();
+
+      let currentStep = 1;
+      const totalSteps = 4;
+      let onboardingData = {};
+
+      // Pre-fill allergies if entered during registration
+      const currentUser = Auth.getCurrentUser();
+      if (currentUser && currentUser.allergies) {
+        document.addEventListener("DOMContentLoaded", function () {
+          const allergiesField = document.getElementById("allergies");
+          if (allergiesField) {
+            allergiesField.value = currentUser.allergies;
+          }
+        });
+      }
+
+      function nextStep() {
+        if (currentStep < totalSteps) {
+          document.getElementById(`step${currentStep}`).classList.add("d-none");
+          currentStep++;
+          document
+            .getElementById(`step${currentStep}`)
+            .classList.remove("d-none");
+          updateProgressSteps();
+        }
+      }
+
+      function previousStep() {
+        if (currentStep > 1) {
+          document.getElementById(`step${currentStep}`).classList.add("d-none");
+          currentStep--;
+          document
+            .getElementById(`step${currentStep}`)
+            .classList.remove("d-none");
+          updateProgressSteps();
+        }
+      }
+
+      function updateProgressSteps() {
+        document.querySelectorAll(".progress-step").forEach((step, index) => {
+          const stepNum = index + 1;
+          if (stepNum < currentStep) {
+            step.classList.add("completed");
+            step.classList.remove("active");
+          } else if (stepNum === currentStep) {
+            step.classList.add("active");
+            step.classList.remove("completed");
+          } else {
+            step.classList.remove("completed", "active");
+          }
+        });
+      }
+
+      // Step 1: Training Type
+      document
+        .getElementById("trainingTypeForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const trainingType = document.querySelector(
+            'input[name="trainingType"]:checked'
+          ).value;
+          onboardingData.trainingType = trainingType;
+
+          // Update Auth with training type
+          const currentUser = Auth.getCurrentUser();
+          if (currentUser) {
+            Auth.setUserType(currentUser.id, trainingType);
+          }
+
+          // Show/hide appropriate sections for step 4
+          if (trainingType === "offline") {
+            document
+              .getElementById("equipmentSection")
+              .classList.remove("d-none");
+            document.getElementById("gymPreferences").classList.add("d-none");
+          } else {
+            document.getElementById("equipmentSection").classList.add("d-none");
+            document
+              .getElementById("gymPreferences")
+              .classList.remove("d-none");
+          }
+
+          nextStep();
+        });
+
+      // Step 2: Personal Info
+      document
+        .getElementById("personalInfoForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          onboardingData.age = document.getElementById("age").value;
+          onboardingData.gender = document.getElementById("gender").value;
+          onboardingData.height = document.getElementById("height").value;
+          onboardingData.weight = document.getElementById("weight").value;
+          nextStep();
+        });
+
+      // Step 3: Goals
+      document
+        .getElementById("goalsForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          onboardingData.goal = document.querySelector(
+            'input[name="goal"]:checked'
+          ).value;
+          onboardingData.experience =
+            document.getElementById("experience").value;
+          nextStep();
+        });
+
+      // Step 4: Final
+      document
+        .getElementById("finalForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          onboardingData.dietType = document.getElementById("dietType").value;
+          onboardingData.allergies = document.getElementById("allergies").value;
+
+          if (onboardingData.trainingType === "offline") {
+            const equipment = [];
+            document
+              .querySelectorAll(
+                '#equipmentSection input[type="checkbox"]:checked'
+              )
+              .forEach((cb) => {
+                equipment.push(cb.value);
+              });
+            onboardingData.equipment = equipment;
+          } else {
+            onboardingData.preferredLocation =
+              document.getElementById("preferredLocation").value;
+          }
+
+          // Save onboarding data to user profile
+          const currentUser = Auth.getCurrentUser();
+          if (currentUser) {
+            currentUser.profile = onboardingData;
+            // Update in localStorage
+            const users = JSON.parse(
+              localStorage.getItem("fitcore_users") || "[]"
+            );
+            const userIndex = users.findIndex((u) => u.id === currentUser.id);
+            if (userIndex !== -1) {
+              users[userIndex] = currentUser;
+              localStorage.setItem("fitcore_users", JSON.stringify(users));
+            }
+          }
+
+          // Redirect to dashboard
+          window.location.href = "dashboard.html";
+        });
+    </script>
+  </body>
+</html>
