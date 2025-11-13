@@ -76,11 +76,7 @@
           <a href="gym-finder.html" class="sidebar-link" id="gymFinderLink">
             <i class="fas fa-search-location me-2"></i> Find Gyms
           </a>
-          <a
-            href="ai-assistant.html"
-            class="sidebar-link d-none"
-            id="aiAssistantLink"
-          >
+          <a href="ai-assistant.html" class="sidebar-link">
             <i class="fas fa-robot me-2"></i> AI Assistant
           </a>
           <a href="progress.html" class="sidebar-link">
@@ -403,14 +399,7 @@
           window.location.href = "../index.html";
         });
 
-      // Check user training type and show appropriate links
-      if (currentUser && currentUser.trainingType) {
-        if (currentUser.trainingType === "offline") {
-          document.getElementById("gymFinderLink").classList.add("d-none");
-          document.getElementById("gymFinderBtn").classList.add("d-none");
-          document.getElementById("aiAssistantLink").classList.remove("d-none");
-        }
-      }
+      // AI Assistant is now visible to all users at all times
     </script>
   </body>
 </html>
