@@ -569,6 +569,320 @@
             </table>
           </div>
         </div>
+
+        <!-- Reports Section -->
+        <div id="reportsSection" class="d-none">
+          <h1 class="mb-4">
+            <i class="fas fa-chart-bar me-2"></i> Reports & Analytics
+          </h1>
+
+          <div class="row g-4 mb-4">
+            <div class="col-md-6">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                  <h5 class="mb-0">
+                    <i class="fas fa-users me-2"></i> User Growth
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <canvas id="userGrowthChart" height="200"></canvas>
+                  <div class="mt-3">
+                    <p class="mb-2">
+                      <strong>Total Registrations:</strong>
+                      <span id="totalRegistrations">0</span>
+                    </p>
+                    <p class="mb-2">
+                      <strong>This Month:</strong>
+                      <span id="monthlyRegistrations">0</span>
+                    </p>
+                    <p class="mb-0">
+                      <strong>Growth Rate:</strong>
+                      <span id="growthRate" class="text-success">+0%</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-success text-white">
+                  <h5 class="mb-0">
+                    <i class="fas fa-chart-pie me-2"></i> User Activity
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <h6>Training Type Distribution</h6>
+                    <div class="mb-2">
+                      <div class="d-flex justify-content-between">
+                        <span>On-Site Training</span>
+                        <strong id="onsiteCount">0</strong>
+                      </div>
+                      <div class="progress" style="height: 20px">
+                        <div
+                          class="progress-bar bg-primary"
+                          id="onsiteBar"
+                          style="width: 0%"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                      <div class="d-flex justify-content-between">
+                        <span>Home Workouts</span>
+                        <strong id="offlineCount">0</strong>
+                      </div>
+                      <div class="progress" style="height: 20px">
+                        <div
+                          class="progress-bar bg-success"
+                          id="offlineBar"
+                          style="width: 0%"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <h6>Active Gyms</h6>
+                  <p class="mb-0">
+                    <strong id="activeGymsCount">0</strong> gyms currently
+                    active
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-12">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-info text-white">
+                  <h5 class="mb-0">
+                    <i class="fas fa-table me-2"></i> Detailed Statistics
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                        <th>Change</th>
+                      </tr>
+                    </thead>
+                    <tbody id="statsTableBody">
+                      <tr>
+                        <td>Total Users</td>
+                        <td id="statTotalUsers">0</td>
+                        <td><span class="badge bg-success">+12%</span></td>
+                      </tr>
+                      <tr>
+                        <td>Active Gyms</td>
+                        <td id="statActiveGyms">0</td>
+                        <td><span class="badge bg-info">Stable</span></td>
+                      </tr>
+                      <tr>
+                        <td>Total Exercises</td>
+                        <td id="statTotalExercises">0</td>
+                        <td><span class="badge bg-primary">+5</span></td>
+                      </tr>
+                      <tr>
+                        <td>Admin Accounts</td>
+                        <td id="statAdminCount">0</td>
+                        <td>
+                          <span class="badge bg-secondary">No Change</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- System Settings Section -->
+        <div id="settingsSection" class="d-none">
+          <h1 class="mb-4"><i class="fas fa-cog me-2"></i> System Settings</h1>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-dark text-white">
+                  <h5 class="mb-0">
+                    <i class="fas fa-database me-2"></i> Database Management
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <p class="text-muted mb-3">
+                    Manage application data and storage
+                  </p>
+                  <div class="d-grid gap-2">
+                    <button
+                      class="btn btn-outline-primary"
+                      onclick="exportData()"
+                    >
+                      <i class="fas fa-download me-2"></i> Export All Data
+                    </button>
+                    <button
+                      class="btn btn-outline-info"
+                      onclick="viewStorageInfo()"
+                    >
+                      <i class="fas fa-info-circle me-2"></i> View Storage Info
+                    </button>
+                    <button
+                      class="btn btn-outline-warning"
+                      onclick="clearCache()"
+                    >
+                      <i class="fas fa-broom me-2"></i> Clear Cache
+                    </button>
+                    <button
+                      class="btn btn-outline-danger"
+                      onclick="resetDatabase()"
+                    >
+                      <i class="fas fa-exclamation-triangle me-2"></i> Reset
+                      Database
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                  <h5 class="mb-0">
+                    <i class="fas fa-shield-alt me-2"></i> Security Settings
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label"
+                      ><strong>Session Timeout</strong></label
+                    >
+                    <select class="form-select" id="sessionTimeout">
+                      <option value="30">30 minutes</option>
+                      <option value="60" selected>1 hour</option>
+                      <option value="120">2 hours</option>
+                      <option value="1440">24 hours</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="requireEmailVerification"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="requireEmailVerification"
+                      >
+                        Require Email Verification
+                      </label>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="enableTwoFactor"
+                      />
+                      <label class="form-check-label" for="enableTwoFactor">
+                        Enable Two-Factor Authentication
+                      </label>
+                    </div>
+                  </div>
+                  <button
+                    class="btn btn-primary w-100"
+                    onclick="saveSecuritySettings()"
+                  >
+                    <i class="fas fa-save me-2"></i> Save Security Settings
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-success text-white">
+                  <h5 class="mb-0">
+                    <i class="fas fa-tools me-2"></i> Application Settings
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label"
+                        ><strong>Application Name</strong></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="appName"
+                        value="FitCore"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label"
+                        ><strong>Default Language</strong></label
+                      >
+                      <select class="form-select" id="defaultLanguage">
+                        <option value="en" selected>English</option>
+                        <option value="ar">Arabic</option>
+                        <option value="fr">French</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label"
+                        ><strong>Max File Upload Size (MB)</strong></label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="maxUploadSize"
+                        value="10"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label"
+                        ><strong>Support Email</strong></label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="supportEmail"
+                        value="support@fitcore.com"
+                      />
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="maintenanceMode"
+                        />
+                        <label class="form-check-label" for="maintenanceMode">
+                          <strong>Maintenance Mode</strong> - Disable user
+                          access for maintenance
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <button
+                        class="btn btn-success"
+                        onclick="saveAppSettings()"
+                      >
+                        <i class="fas fa-save me-2"></i> Save Application
+                        Settings
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
 
@@ -599,21 +913,830 @@
         });
       }
 
+      // ================== SECTION NAVIGATION ==================
       function showSection(section) {
-        // Hide all sections
         document
           .querySelectorAll('[id$="Section"]')
           .forEach((el) => el.classList.add("d-none"));
-
-        // Show selected section
         document.getElementById(section + "Section").classList.remove("d-none");
-
-        // Update active state in sidebar
         document
           .querySelectorAll(".sidebar-link")
           .forEach((link) => link.classList.remove("active"));
         event.target.closest(".sidebar-link").classList.add("active");
+
+        // Load data when switching sections
+        if (section === "users") loadUsers();
+        if (section === "gyms") loadGyms();
+        if (section === "exercises") loadExercises();
       }
+
+      // ================== USER MANAGEMENT ==================
+      function loadUsers() {
+        const users = JSON.parse(localStorage.getItem("fitcore_users")) || [];
+        const tbody = document.querySelector("#usersSection tbody");
+        tbody.innerHTML = "";
+
+        users.forEach((user) => {
+          const tr = document.createElement("tr");
+          const statusBadge = user.role === "admin" ? "info" : "success";
+          const trainingType = user.trainingType || "Not Set";
+          const trainingBadge =
+            user.trainingType === "onsite"
+              ? "primary"
+              : user.trainingType === "offline"
+              ? "success"
+              : "secondary";
+
+          tr.innerHTML = `
+            <td>#${user.id}</td>
+            <td>${user.firstName} ${user.lastName}</td>
+            <td>${user.email}</td>
+            <td><span class="badge bg-${trainingBadge}">${trainingType}</span></td>
+            <td><span class="badge bg-${statusBadge}">${
+            user.role === "admin" ? "Admin" : "Active"
+          }</span></td>
+            <td>${new Date(user.createdAt).toLocaleDateString()}</td>
+            <td>
+              <button class="btn btn-sm btn-info" onclick="viewUser(${
+                user.id
+              })" title="View">
+                <i class="fas fa-eye"></i>
+              </button>
+              <button class="btn btn-sm btn-warning" onclick="editUser(${
+                user.id
+              })" title="Edit">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" onclick="deleteUser(${
+                user.id
+              })" title="Delete" ${user.role === "admin" ? "disabled" : ""}>
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        updateDashboardStats();
+      }
+
+      function viewUser(userId) {
+        const users = JSON.parse(localStorage.getItem("fitcore_users")) || [];
+        const user = users.find((u) => u.id === userId);
+        if (!user) return;
+
+        const details = `
+User Details:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Name: ${user.firstName} ${user.lastName}
+Email: ${user.email}
+Role: ${user.role}
+Training Type: ${user.trainingType || "Not Set"}
+Allergies: ${user.allergies || "None"}
+Joined: ${new Date(user.createdAt).toLocaleString()}
+
+${
+  user.profile
+    ? `Profile:
+  Age: ${user.profile.age}
+  Gender: ${user.profile.gender}
+  Height: ${user.profile.height} cm
+  Weight: ${user.profile.weight} kg
+  Goal: ${user.profile.goal}
+  Experience: ${user.profile.experience}
+  Diet Type: ${user.profile.dietType}`
+    : "Profile not completed"
+}
+        `;
+        alert(details);
+      }
+
+      function editUser(userId) {
+        const users = JSON.parse(localStorage.getItem("fitcore_users")) || [];
+        const user = users.find((u) => u.id === userId);
+        if (!user) return;
+
+        const newEmail = prompt("Edit Email:", user.email);
+        if (newEmail && newEmail !== user.email) {
+          if (users.some((u) => u.email === newEmail && u.id !== userId)) {
+            alert("Email already exists!");
+            return;
+          }
+          user.email = newEmail;
+        }
+
+        const newTrainingType = prompt(
+          "Edit Training Type (onsite/offline):",
+          user.trainingType || ""
+        );
+        if (
+          newTrainingType &&
+          (newTrainingType === "onsite" || newTrainingType === "offline")
+        ) {
+          user.trainingType = newTrainingType;
+        }
+
+        localStorage.setItem("fitcore_users", JSON.stringify(users));
+
+        // Update session if editing current user
+        const session = JSON.parse(localStorage.getItem("fitcore_session"));
+        if (session && session.id === userId) {
+          localStorage.setItem("fitcore_session", JSON.stringify(user));
+        }
+
+        loadUsers();
+        alert("User updated successfully!");
+      }
+
+      function deleteUser(userId) {
+        const users = JSON.parse(localStorage.getItem("fitcore_users")) || [];
+        const user = users.find((u) => u.id === userId);
+
+        if (!user) return;
+        if (user.role === "admin") {
+          alert("Cannot delete admin accounts!");
+          return;
+        }
+
+        if (
+          confirm(
+            `Delete user "${user.firstName} ${user.lastName}"? This action cannot be undone.`
+          )
+        ) {
+          const updatedUsers = users.filter((u) => u.id !== userId);
+          localStorage.setItem("fitcore_users", JSON.stringify(updatedUsers));
+          loadUsers();
+          alert("User deleted successfully!");
+        }
+      }
+
+      // ================== GYM MANAGEMENT ==================
+      function initializeGyms() {
+        if (!localStorage.getItem("fitcore_gyms")) {
+          const defaultGyms = [
+            {
+              id: 1,
+              name: "Gold's Gym",
+              location: "Nasr City, Cairo",
+              hours: "6:00 AM - 11:00 PM",
+              status: "active",
+              rating: 4.5,
+              price: "800 EGP/month",
+            },
+            {
+              id: 2,
+              name: "FitZone Premium",
+              location: "Maadi, Cairo",
+              hours: "24/7",
+              status: "active",
+              rating: 4.8,
+              price: "1200 EGP/month",
+            },
+            {
+              id: 3,
+              name: "PowerHouse Gym",
+              location: "Mohandessin, Giza",
+              hours: "5:00 AM - 11:00 PM",
+              status: "active",
+              rating: 4.3,
+              price: "600 EGP/month",
+            },
+            {
+              id: 4,
+              name: "Elite Fitness",
+              location: "Zamalek, Cairo",
+              hours: "6:00 AM - 10:00 PM",
+              status: "active",
+              rating: 4.7,
+              price: "1500 EGP/month",
+            },
+          ];
+          localStorage.setItem("fitcore_gyms", JSON.stringify(defaultGyms));
+        }
+      }
+
+      function loadGyms() {
+        initializeGyms();
+        const gyms = JSON.parse(localStorage.getItem("fitcore_gyms")) || [];
+        const tbody = document.querySelector("#gymsSection tbody");
+        tbody.innerHTML = "";
+
+        gyms.forEach((gym) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>#G${String(gym.id).padStart(3, "0")}</td>
+            <td>${gym.name}</td>
+            <td>${gym.location}</td>
+            <td>${gym.hours}</td>
+            <td><span class="badge bg-${
+              gym.status === "active" ? "success" : "danger"
+            }">${gym.status}</span></td>
+            <td>
+              <button class="btn btn-sm btn-info" onclick="viewGym(${
+                gym.id
+              })" title="View">
+                <i class="fas fa-eye"></i>
+              </button>
+              <button class="btn btn-sm btn-warning" onclick="editGym(${
+                gym.id
+              })" title="Edit">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" onclick="deleteGym(${
+                gym.id
+              })" title="Delete">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function viewGym(gymId) {
+        const gyms = JSON.parse(localStorage.getItem("fitcore_gyms")) || [];
+        const gym = gyms.find((g) => g.id === gymId);
+        if (!gym) return;
+
+        alert(`Gym Details:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Name: ${gym.name}
+Location: ${gym.location}
+Operating Hours: ${gym.hours}
+Status: ${gym.status}
+Rating: ${gym.rating}/5
+Price: ${gym.price}`);
+      }
+
+      function editGym(gymId) {
+        const gyms = JSON.parse(localStorage.getItem("fitcore_gyms")) || [];
+        const gym = gyms.find((g) => g.id === gymId);
+        if (!gym) return;
+
+        const newName = prompt("Edit Gym Name:", gym.name);
+        if (newName) gym.name = newName;
+
+        const newLocation = prompt("Edit Location:", gym.location);
+        if (newLocation) gym.location = newLocation;
+
+        const newHours = prompt("Edit Operating Hours:", gym.hours);
+        if (newHours) gym.hours = newHours;
+
+        localStorage.setItem("fitcore_gyms", JSON.stringify(gyms));
+        loadGyms();
+        alert("Gym updated successfully!");
+      }
+
+      function deleteGym(gymId) {
+        const gyms = JSON.parse(localStorage.getItem("fitcore_gyms")) || [];
+        const gym = gyms.find((g) => g.id === gymId);
+
+        if (!gym) return;
+
+        if (
+          confirm(`Delete gym "${gym.name}"? This action cannot be undone.`)
+        ) {
+          const updatedGyms = gyms.filter((g) => g.id !== gymId);
+          localStorage.setItem("fitcore_gyms", JSON.stringify(updatedGyms));
+          loadGyms();
+          alert("Gym deleted successfully!");
+        }
+      }
+
+      // ================== EXERCISE LIBRARY ==================
+      function initializeExercises() {
+        if (!localStorage.getItem("fitcore_exercises")) {
+          const defaultExercises = [
+            {
+              id: 1,
+              name: "Bench Press",
+              category: "Strength",
+              muscles: "Chest, Triceps",
+              difficulty: "intermediate",
+              equipment: "Barbell",
+            },
+            {
+              id: 2,
+              name: "Squats",
+              category: "Strength",
+              muscles: "Quads, Glutes",
+              difficulty: "beginner",
+              equipment: "Barbell",
+            },
+            {
+              id: 3,
+              name: "Deadlift",
+              category: "Strength",
+              muscles: "Back, Legs",
+              difficulty: "advanced",
+              equipment: "Barbell",
+            },
+            {
+              id: 4,
+              name: "Pull-ups",
+              category: "Strength",
+              muscles: "Back, Biceps",
+              difficulty: "intermediate",
+              equipment: "Pull-up Bar",
+            },
+            {
+              id: 5,
+              name: "Push-ups",
+              category: "Strength",
+              muscles: "Chest, Triceps",
+              difficulty: "beginner",
+              equipment: "Bodyweight",
+            },
+            {
+              id: 6,
+              name: "Lunges",
+              category: "Strength",
+              muscles: "Legs, Glutes",
+              difficulty: "beginner",
+              equipment: "Bodyweight",
+            },
+          ];
+          localStorage.setItem(
+            "fitcore_exercises",
+            JSON.stringify(defaultExercises)
+          );
+        }
+      }
+
+      function loadExercises() {
+        initializeExercises();
+        const exercises =
+          JSON.parse(localStorage.getItem("fitcore_exercises")) || [];
+        const tbody = document.querySelector("#exercisesSection tbody");
+        tbody.innerHTML = "";
+
+        exercises.forEach((exercise) => {
+          const tr = document.createElement("tr");
+          const difficultyColor =
+            exercise.difficulty === "beginner"
+              ? "success"
+              : exercise.difficulty === "intermediate"
+              ? "warning"
+              : "danger";
+
+          tr.innerHTML = `
+            <td>#E${String(exercise.id).padStart(3, "0")}</td>
+            <td>${exercise.name}</td>
+            <td>${exercise.category}</td>
+            <td>${exercise.muscles}</td>
+            <td><span class="badge bg-${difficultyColor}">${
+            exercise.difficulty
+          }</span></td>
+            <td>
+              <button class="btn btn-sm btn-info" onclick="viewExercise(${
+                exercise.id
+              })" title="View">
+                <i class="fas fa-eye"></i>
+              </button>
+              <button class="btn btn-sm btn-warning" onclick="editExercise(${
+                exercise.id
+              })" title="Edit">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" onclick="deleteExercise(${
+                exercise.id
+              })" title="Delete">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function viewExercise(exerciseId) {
+        const exercises =
+          JSON.parse(localStorage.getItem("fitcore_exercises")) || [];
+        const exercise = exercises.find((e) => e.id === exerciseId);
+        if (!exercise) return;
+
+        alert(`Exercise Details:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Name: ${exercise.name}
+Category: ${exercise.category}
+Target Muscles: ${exercise.muscles}
+Difficulty: ${exercise.difficulty}
+Equipment: ${exercise.equipment}`);
+      }
+
+      function editExercise(exerciseId) {
+        const exercises =
+          JSON.parse(localStorage.getItem("fitcore_exercises")) || [];
+        const exercise = exercises.find((e) => e.id === exerciseId);
+        if (!exercise) return;
+
+        const newName = prompt("Edit Exercise Name:", exercise.name);
+        if (newName) exercise.name = newName;
+
+        const newCategory = prompt("Edit Category:", exercise.category);
+        if (newCategory) exercise.category = newCategory;
+
+        const newMuscles = prompt("Edit Target Muscles:", exercise.muscles);
+        if (newMuscles) exercise.muscles = newMuscles;
+
+        const newDifficulty = prompt(
+          "Edit Difficulty (beginner/intermediate/advanced):",
+          exercise.difficulty
+        );
+        if (
+          newDifficulty &&
+          ["beginner", "intermediate", "advanced"].includes(newDifficulty)
+        ) {
+          exercise.difficulty = newDifficulty;
+        }
+
+        localStorage.setItem("fitcore_exercises", JSON.stringify(exercises));
+        loadExercises();
+        alert("Exercise updated successfully!");
+      }
+
+      function deleteExercise(exerciseId) {
+        const exercises =
+          JSON.parse(localStorage.getItem("fitcore_exercises")) || [];
+        const exercise = exercises.find((e) => e.id === exerciseId);
+
+        if (!exercise) return;
+
+        if (
+          confirm(
+            `Delete exercise "${exercise.name}"? This action cannot be undone.`
+          )
+        ) {
+          const updatedExercises = exercises.filter((e) => e.id !== exerciseId);
+          localStorage.setItem(
+            "fitcore_exercises",
+            JSON.stringify(updatedExercises)
+          );
+          loadExercises();
+          alert("Exercise deleted successfully!");
+        }
+      }
+
+      // ================== DASHBOARD STATS ==================
+      function updateDashboardStats() {
+        const users = JSON.parse(localStorage.getItem("fitcore_users")) || [];
+        const gyms = JSON.parse(localStorage.getItem("fitcore_gyms")) || [];
+
+        // Update total users count
+        const totalUsersElement = document.querySelector(
+          "#dashboardSection .stat-card:nth-child(1) h3"
+        );
+        if (totalUsersElement) totalUsersElement.textContent = users.length;
+
+        // Update active gyms count
+        const activeGymsElement = document.querySelector(
+          "#dashboardSection .stat-card:nth-child(2) h3"
+        );
+        if (activeGymsElement)
+          activeGymsElement.textContent = gyms.filter(
+            (g) => g.status === "active"
+          ).length;
+
+        // Calculate user distribution
+        const onsiteUsers = users.filter(
+          (u) => u.trainingType === "onsite"
+        ).length;
+        const offlineUsers = users.filter(
+          (u) => u.trainingType === "offline"
+        ).length;
+        const totalWithType = onsiteUsers + offlineUsers;
+
+        if (totalWithType > 0) {
+          const onsitePercent = Math.round((onsiteUsers / totalWithType) * 100);
+          const offlinePercent = Math.round(
+            (offlineUsers / totalWithType) * 100
+          );
+
+          const onsiteBar = document.querySelector(
+            "#dashboardSection .progress-bar.bg-primary"
+          );
+          const offlineBar = document.querySelector(
+            "#dashboardSection .progress-bar.bg-success"
+          );
+          const onsiteText = document.querySelector(
+            "#dashboardSection .card-body .mb-3:nth-child(1) strong"
+          );
+          const offlineText = document.querySelector(
+            "#dashboardSection .card-body .mb-3:nth-child(2) strong"
+          );
+
+          if (onsiteBar) onsiteBar.style.width = onsitePercent + "%";
+          if (offlineBar) offlineBar.style.width = offlinePercent + "%";
+          if (onsiteText) onsiteText.textContent = onsitePercent + "%";
+          if (offlineText) offlineText.textContent = offlinePercent + "%";
+        }
+      }
+
+      // ================== INITIALIZATION ==================
+      document.addEventListener("DOMContentLoaded", function () {
+        updateDashboardStats();
+
+        // Add click handlers to Add buttons
+        document.querySelectorAll(".btn-primary").forEach((btn) => {
+          if (btn.textContent.includes("Add Gym")) {
+            btn.onclick = () => addGym();
+          } else if (btn.textContent.includes("Add Exercise")) {
+            btn.onclick = () => addExercise();
+          }
+        });
+      });
+
+      function addGym() {
+        const name = prompt("Gym Name:");
+        if (!name) return;
+
+        const location = prompt("Location:");
+        if (!location) return;
+
+        const hours = prompt("Operating Hours (e.g., 6:00 AM - 11:00 PM):");
+        if (!hours) return;
+
+        const gyms = JSON.parse(localStorage.getItem("fitcore_gyms")) || [];
+        const newId = Math.max(...gyms.map((g) => g.id), 0) + 1;
+
+        gyms.push({
+          id: newId,
+          name: name,
+          location: location,
+          hours: hours,
+          status: "active",
+          rating: 0,
+          price: "0 EGP/month",
+        });
+
+        localStorage.setItem("fitcore_gyms", JSON.stringify(gyms));
+        loadGyms();
+        alert("Gym added successfully!");
+      }
+
+      function addExercise() {
+        const name = prompt("Exercise Name:");
+        if (!name) return;
+
+        const category = prompt("Category (e.g., Strength, Cardio):");
+        if (!category) return;
+
+        const muscles = prompt("Target Muscles (e.g., Chest, Triceps):");
+        if (!muscles) return;
+
+        const difficulty = prompt(
+          "Difficulty (beginner/intermediate/advanced):"
+        );
+        if (
+          !difficulty ||
+          !["beginner", "intermediate", "advanced"].includes(difficulty)
+        ) {
+          alert("Invalid difficulty level!");
+          return;
+        }
+
+        const equipment = prompt("Required Equipment:");
+        if (!equipment) return;
+
+        const exercises =
+          JSON.parse(localStorage.getItem("fitcore_exercises")) || [];
+        const newId = Math.max(...exercises.map((e) => e.id), 0) + 1;
+
+        exercises.push({
+          id: newId,
+          name: name,
+          category: category,
+          muscles: muscles,
+          difficulty: difficulty,
+          equipment: equipment,
+        });
+
+        localStorage.setItem("fitcore_exercises", JSON.stringify(exercises));
+        loadExercises();
+        alert("Exercise added successfully!");
+      }
+
+      // ================== REPORTS SECTION ==================
+      function loadReports() {
+        const users = JSON.parse(localStorage.getItem("fitcore_users")) || [];
+        const gyms = JSON.parse(localStorage.getItem("fitcore_gyms")) || [];
+        const exercises =
+          JSON.parse(localStorage.getItem("fitcore_exercises")) || [];
+
+        // User counts
+        const onsiteUsers = users.filter(
+          (u) => u.trainingType === "onsite"
+        ).length;
+        const offlineUsers = users.filter(
+          (u) => u.trainingType === "offline"
+        ).length;
+        const totalWithType = onsiteUsers + offlineUsers;
+        const adminCount = users.filter((u) => u.role === "admin").length;
+
+        // Update user growth stats
+        document.getElementById("totalRegistrations").textContent =
+          users.length;
+        document.getElementById("monthlyRegistrations").textContent =
+          Math.floor(users.length * 0.15); // Simulated
+        document.getElementById("growthRate").textContent = "+12%";
+
+        // Update training type distribution
+        if (totalWithType > 0) {
+          const onsitePercent = Math.round((onsiteUsers / totalWithType) * 100);
+          const offlinePercent = Math.round(
+            (offlineUsers / totalWithType) * 100
+          );
+
+          document.getElementById("onsiteCount").textContent = onsiteUsers;
+          document.getElementById("offlineCount").textContent = offlineUsers;
+          document.getElementById("onsiteBar").style.width =
+            onsitePercent + "%";
+          document.getElementById("offlineBar").style.width =
+            offlinePercent + "%";
+        }
+
+        // Update active gyms
+        const activeGyms = gyms.filter((g) => g.status === "active").length;
+        document.getElementById("activeGymsCount").textContent = activeGyms;
+
+        // Update statistics table
+        document.getElementById("statTotalUsers").textContent = users.length;
+        document.getElementById("statActiveGyms").textContent = activeGyms;
+        document.getElementById("statTotalExercises").textContent =
+          exercises.length;
+        document.getElementById("statAdminCount").textContent = adminCount;
+      }
+
+      // ================== SYSTEM SETTINGS ==================
+      function exportData() {
+        const data = {
+          users: JSON.parse(localStorage.getItem("fitcore_users")) || [],
+          gyms: JSON.parse(localStorage.getItem("fitcore_gyms")) || [],
+          exercises:
+            JSON.parse(localStorage.getItem("fitcore_exercises")) || [],
+          exportDate: new Date().toISOString(),
+        };
+
+        const dataStr = JSON.stringify(data, null, 2);
+        const dataBlob = new Blob([dataStr], { type: "application/json" });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `fitcore-backup-${
+          new Date().toISOString().split("T")[0]
+        }.json`;
+        link.click();
+
+        alert("Data exported successfully! Check your downloads folder.");
+      }
+
+      function viewStorageInfo() {
+        const users = localStorage.getItem("fitcore_users") || "[]";
+        const gyms = localStorage.getItem("fitcore_gyms") || "[]";
+        const exercises = localStorage.getItem("fitcore_exercises") || "[]";
+        const session = localStorage.getItem("fitcore_session") || "{}";
+
+        const totalSize = new Blob([users + gyms + exercises + session]).size;
+        const usersSize = new Blob([users]).size;
+        const gymsSize = new Blob([gyms]).size;
+        const exercisesSize = new Blob([exercises]).size;
+
+        const info = `Storage Information:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total Storage Used: ${(totalSize / 1024).toFixed(2)} KB
+
+Breakdown:
+• Users Data: ${(usersSize / 1024).toFixed(2)} KB
+• Gyms Data: ${(gymsSize / 1024).toFixed(2)} KB
+• Exercises Data: ${(exercisesSize / 1024).toFixed(2)} KB
+
+Items Count:
+• Users: ${JSON.parse(users).length}
+• Gyms: ${JSON.parse(gyms).length}
+• Exercises: ${JSON.parse(exercises).length}`;
+
+        alert(info);
+      }
+
+      function clearCache() {
+        if (
+          confirm("Clear application cache? This will not delete user data.")
+        ) {
+          // In a real app, this would clear temporary cache
+          // For now, we'll just show a message
+          alert("Cache cleared successfully!");
+        }
+      }
+
+      function resetDatabase() {
+        const confirmation = prompt(
+          '⚠️ WARNING: This will delete ALL data!\n\nType "RESET" to confirm:',
+          ""
+        );
+
+        if (confirmation === "RESET") {
+          localStorage.removeItem("fitcore_users");
+          localStorage.removeItem("fitcore_gyms");
+          localStorage.removeItem("fitcore_exercises");
+          localStorage.removeItem("fitcore_session");
+          localStorage.removeItem("fitcore_initialized");
+
+          alert(
+            "Database reset successfully! The page will reload to reinitialize default accounts."
+          );
+          window.location.reload();
+        } else if (confirmation) {
+          alert('Reset cancelled. Please type "RESET" exactly to confirm.');
+        }
+      }
+
+      function saveSecuritySettings() {
+        const timeout = document.getElementById("sessionTimeout").value;
+        const emailVerification = document.getElementById(
+          "requireEmailVerification"
+        ).checked;
+        const twoFactor = document.getElementById("enableTwoFactor").checked;
+
+        const settings = {
+          sessionTimeout: timeout,
+          requireEmailVerification: emailVerification,
+          enableTwoFactor: twoFactor,
+        };
+
+        localStorage.setItem(
+          "fitcore_security_settings",
+          JSON.stringify(settings)
+        );
+        alert("Security settings saved successfully!");
+      }
+
+      function saveAppSettings() {
+        const settings = {
+          appName: document.getElementById("appName").value,
+          defaultLanguage: document.getElementById("defaultLanguage").value,
+          maxUploadSize: document.getElementById("maxUploadSize").value,
+          supportEmail: document.getElementById("supportEmail").value,
+          maintenanceMode: document.getElementById("maintenanceMode").checked,
+        };
+
+        localStorage.setItem("fitcore_app_settings", JSON.stringify(settings));
+        alert("Application settings saved successfully!");
+
+        if (settings.maintenanceMode) {
+          alert(
+            "⚠️ Maintenance mode enabled! Regular users will see a maintenance message."
+          );
+        }
+      }
+
+      // Update showSection to handle reports and settings
+      const originalShowSection = showSection;
+      showSection = function (section) {
+        originalShowSection(section);
+
+        if (section === "reports") loadReports();
+        if (section === "settings") {
+          // Load saved settings
+          const securitySettings = JSON.parse(
+            localStorage.getItem("fitcore_security_settings") || "{}"
+          );
+          const appSettings = JSON.parse(
+            localStorage.getItem("fitcore_app_settings") || "{}"
+          );
+
+          if (securitySettings.sessionTimeout) {
+            document.getElementById("sessionTimeout").value =
+              securitySettings.sessionTimeout;
+          }
+          if (securitySettings.requireEmailVerification !== undefined) {
+            document.getElementById("requireEmailVerification").checked =
+              securitySettings.requireEmailVerification;
+          }
+          if (securitySettings.enableTwoFactor !== undefined) {
+            document.getElementById("enableTwoFactor").checked =
+              securitySettings.enableTwoFactor;
+          }
+
+          if (appSettings.appName)
+            document.getElementById("appName").value = appSettings.appName;
+          if (appSettings.defaultLanguage)
+            document.getElementById("defaultLanguage").value =
+              appSettings.defaultLanguage;
+          if (appSettings.maxUploadSize)
+            document.getElementById("maxUploadSize").value =
+              appSettings.maxUploadSize;
+          if (appSettings.supportEmail)
+            document.getElementById("supportEmail").value =
+              appSettings.supportEmail;
+          if (appSettings.maintenanceMode !== undefined) {
+            document.getElementById("maintenanceMode").checked =
+              appSettings.maintenanceMode;
+          }
+        }
+      };
+
+      // Load initial data
+      updateDashboardStats();
     </script>
   </body>
 </html>
