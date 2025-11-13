@@ -29,6 +29,7 @@ function initializeDefaultAccounts() {
             email: 'user@fitcore.com',
             password: 'user123', // In production, this would be hashed
             role: 'user',
+            trainingType: 'onsite',
             userType: null, // Will be set after onboarding
             profile: {
                 age: 25,
@@ -40,6 +41,7 @@ function initializeDefaultAccounts() {
                 dietType: 'none',
                 equipment: ['dumbbells', 'resistance_bands']
             },
+            onboardingCompleted: true, // Default user has completed onboarding
             createdAt: new Date().toISOString()
         });
     }
@@ -75,6 +77,7 @@ const Auth = {
             userType: null, // Will be set during workout selection
             allergies: userData.allergies || null, // Store allergies from registration
             profile: null,
+            onboardingCompleted: false, // Track onboarding completion
             createdAt: new Date().toISOString()
         };
         
@@ -212,6 +215,48 @@ const Auth = {
         }
         if (!this.isAdmin()) {
             window.location.href = '../pages/dashboard.html';
+            return false;
+        }
+        return true;
+    },
+    
+    // Mark onboarding as completed
+    completeOnboarding: function(userId) {
+        const users = JSON.parse(localStorage.getItem('fitcore_users')) || [];
+        const userIndex = users.findIndex(u => u.id === userId);
+        
+        if (userIndex === -1) {
+            return { success: false, message: 'User not found' };
+        }
+        
+        users[userIndex].onboardingCompleted = true;
+        localStorage.setItem('fitcore_users', JSON.stringify(users));
+        
+        // Update current user
+        const currentUser = this.getCurrentUser();
+        if (currentUser && currentUser.id === userId) {
+            currentUser.onboardingCompleted = true;
+            localStorage.setItem('fitcore_current_user', JSON.stringify(currentUser));
+        }
+        
+        return { success: true, message: 'Onboarding completed' };
+    },
+    
+    // Check if onboarding is completed
+    isOnboardingCompleted: function() {
+        const user = this.getCurrentUser();
+        return user && (user.onboardingCompleted === true || user.role === 'admin');
+    },
+    
+    // Require onboarding completion (redirect to onboarding if not completed)
+    requireOnboarding: function() {
+        if (!this.isLoggedIn()) {
+            window.location.href = '../pages/login.html';
+            return false;
+        }
+        const user = this.getCurrentUser();
+        if (user && user.role === 'user' && !user.onboardingCompleted) {
+            window.location.href = '../pages/onboarding.html';
             return false;
         }
         return true;

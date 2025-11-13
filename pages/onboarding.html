@@ -368,6 +368,14 @@
     <script src="../js/all.min.js"></script>
     <script src="../js/auth.js"></script>
     <script>
+      // Protect page - require login
+      Auth.requireLogin();
+
+      // Redirect to dashboard if onboarding already completed
+      const currentUser = Auth.getCurrentUser();
+      if (currentUser && currentUser.onboardingCompleted) {
+        window.location.href = "dashboard.html";
+      }
       // Require login
       Auth.requireLogin();
 
@@ -517,6 +525,9 @@
               users[userIndex] = currentUser;
               localStorage.setItem("fitcore_users", JSON.stringify(users));
             }
+
+            // Mark onboarding as completed
+            Auth.completeOnboarding(currentUser.id);
           }
 
           // Redirect to dashboard

@@ -377,8 +377,9 @@
     <script src="../js/all.min.js"></script>
     <script src="../js/auth.js"></script>
     <script>
-      // Protect page - require login
+      // Protect page - require login and onboarding completion
       Auth.requireLogin();
+      Auth.requireOnboarding();
 
       // Get current user and display info
       const currentUser = Auth.getCurrentUser();
