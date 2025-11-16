@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/all.min.css" />
     <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      /* Fix for radio button selection visibility */
+      .btn-check:checked + .btn-outline-primary {
+        background-color: #667eea;
+        border-color: #667eea;
+        color: white;
+      }
+      .btn-check + .btn-outline-primary:hover {
+        background-color: rgba(102, 126, 234, 0.1);
+        border-color: #667eea;
+        cursor: pointer;
+      }
+      .btn-outline-primary {
+        transition: all 0.3s ease;
+      }
+    </style>
   </head>
   <body class="bg-light">
     <nav class="navbar navbar-dark bg-dark">
@@ -376,15 +392,12 @@
       if (currentUser && currentUser.onboardingCompleted) {
         window.location.href = "dashboard.html";
       }
-      // Require login
-      Auth.requireLogin();
 
       let currentStep = 1;
       const totalSteps = 4;
       let onboardingData = {};
 
       // Pre-fill allergies if entered during registration
-      const currentUser = Auth.getCurrentUser();
       if (currentUser && currentUser.allergies) {
         document.addEventListener("DOMContentLoaded", function () {
           const allergiesField = document.getElementById("allergies");
